@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- ✅ SEO -->
+  <title>Albadent – Clínica Dental | Reserva tu Cita Online - Barcelona</title>
+  <meta name="description" content="Clínica dental en Nou Barris, Barcelona. Reserva tu cita online. Dr. Jamil Albahri y Dr. Mohamad Sabbagh. Implantes, ortodoncia, estética dental." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://b34-arte.github.io/albadent/" />
+  
+  <!-- ✅ Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Albadent – Clínica Dental | Reserva tu Cita Online" />
+  <meta property="og:description" content="Tratamientos dentales avanzados en Barcelona. Reserva online en 2 minutos." />
+  <meta property="og:url" content="https://b34-arte.github.io/albadent/" />
+  
+  <!-- ✅ Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- ✅ Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violet: { DEFAULT: '#7C3AED', light: '#C4B5FD', pale: '#F5F3FF', deep: '#4C1D95' },
+            lavender: { DEFAULT: '#EDE9FE', mid: '#DDD6FE' },
+            cream: '#FDFCFB',
+            charcoal: '#1C1C2E',
+            mid: '#6B6B80',
+            'green-wa': '#25D366',
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['DM Sans', 'sans-serif'],
+          },
+          borderRadius: { 'custom': '16px', 'custom-sm': '8px' },
+          maxWidth: { 'container': '1200px' },
+        }
+      }
+    };
+  </script>
+  
+  <style>
+    html { scroll-behavior: smooth; }
+    .skip-link { position: absolute; top: -40px; left: 0; background: #7C3AED; color: white; padding: 8px 16px; z-index: 100; }
+    .skip-link:focus { top: 0; }
+    .glass { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.3); }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+    .text-gradient { background: linear-gradient(135deg, #7C3AED, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .form-input:focus { outline: none; box-shadow: 0 0 0 3px rgba(124,58,237,0.2); border-color: #7C3AED; }
+    .whatsapp-pulse { animation: pulse-green 2s infinite; }
+    @keyframes pulse-green { 0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 12px rgba(37,211,102,0); } }
+  </style>
+  
+  <!-- ✅ JSON-LD para SEO Local -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Dentist","name":"Clínica Dental Albadent","telephone":"+34663165024","email":"info@albadent.com","address":{"@type":"PostalAddress","streetAddress":"Carrer d'Escòcia, 94","addressLocality":"Barcelona","postalCode":"08016","addressCountry":"ES"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"20:00"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"500"}}
+  </script>
+</head>
+
+<body class="font-sans antialiased text-charcoal bg-cream">
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+
+  <!-- ✅ Header -->
+  <header class="fixed w-full top-0 z-50 glass">
+    <nav class="max-w-container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="/" class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-violet to-accent-500 rounded-custom-sm flex items-center justify-center">
+          <span class="text-white font-bold text-xl">A</span>
+        </div>
+        <span class="text-xl font-bold text-charcoal font-serif">Albadent</span>
+      </a>
+      
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#servicios" class="text-charcoal hover:text-violet transition">Servicios</a>
+        <a href="#nosotros" class="text-charcoal hover:text-violet transition">Nosotros</a>
+        <a href="#ubicacion" class="text-charcoal hover:text-violet transition">Ubicación</a>
+        <a href="/login" class="text-charcoal hover:text-violet transition font-medium">Acceso Staff</a>
+        <a href="#reserva" class="px-6 py-2.5 bg-gradient-to-r from-violet to-accent-500 text-white rounded-full font-medium hover:from-violet-deep transition shadow-lg">Reservar Cita</a>
+      </div>
+      
+      <button id="menu-btn" class="md:hidden p-2" aria-label="Menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-4 py-3 space-y-2">
+        <a href="#servicios" class="block py-2 text-charcoal">Servicios</a>
+        <a href="#nosotros" class="block py-2 text-charcoal">Nosotros</a>
+        <a href="#ubicacion" class="block py-2 text-charcoal">Ubicación</a>
+        <a href="/login" class="block py-2 text-charcoal">Acceso Staff</a>
+        <a href="#reserva" class="block py-3 bg-violet text-white text-center rounded-full font-medium">Reservar Cita</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="pt-20">
+    
+    <!-- ✅ Hero -->
+    <section class="relative overflow-hidden py-16 lg:py-24">
+      <div class="max-w-container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1.5 bg-violet-pale text-violet-deep text-sm font-semibold rounded-full mb-4">✦ Clínica Dental Premium</span>
+          <h1 class="text-4xl lg:text-5xl font-bold font-serif text-charcoal leading-tight mb-6">
+            Tu sonrisa es <span class="text-gradient">nuestra pasión</span>
+          </h1>
+          <p class="text-lg text-mid mb-8">Reserva tu cita online en 2 minutos. Tecnología avanzada y trato humano en Barcelona.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#reserva" class="px-7 py-3.5 bg-gradient-to-r from-violet to-accent-500 text-white rounded-full font-medium hover:from-violet-deep transition shadow-lg">Reservar Cita Ahora</a>
+            <a href="#servicios" class="px-7 py-3.5 border-2 border-lavender text-charcoal rounded-full font-medium hover:bg-violet-pale transition">Ver Servicios</a>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-6 text-sm text-mid">
+            <span class="flex items-center gap-2">✓ +15 años experiencia</span>
+            <span class="flex items-center gap-2">✓ +3k pacientes felices</span>
+            <span class="flex items-center gap-2">✓ Primera visita gratis</span>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="bg-white rounded-custom shadow-2xl p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="bg-green-100 p-2 rounded-full"><svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg></div>
+              <div><p class="font-bold text-charcoal">⭐ 4.9 / 5</p><p class="text-sm text-mid">+500 reseñas Google</p></div>
+            </div>
+            <div class="grid grid-cols-2 gap-3 text-center">
+              <div class="p-3 bg-violet-pale rounded-custom-sm"><p class="text-2xl font-bold text-violet">+15</p><p class="text-xs text-mid">Años</p></div>
+              <div class="p-3 bg-lavender rounded-custom-sm"><p class="text-2xl font-bold text-violet">+3k</p><p class="text-xs text-mid">Pacientes</p></div>
+              <div class="p-3 bg-lavender rounded-custom-sm"><p class="text-2xl font-bold text-violet">2</p><p class="text-xs text-mid">Doctores</p></div>
+              <div class="p-3 bg-violet-pale rounded-custom-sm"><p class="text-2xl font-bold text-violet">⭐4.9</p><p class="text-xs text-mid">Valoración</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ Servicios -->
+    <section id="servicios" class="py-16 bg-violet-pale">
+      <div class="max-w-container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold font-serif text-charcoal mb-3">Nuestros Servicios</h2>
+          <p class="text-mid">Tratamientos dentales con tecnología de vanguardia</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="card-hover bg-white rounded-custom p-6 shadow border border-lavender">
+            <div class="w-12 h-12 bg-gradient-to-br from-violet to-accent-500 rounded-custom-sm flex items-center justify-center text-white text-xl mb-4">✨</div>
+            <h3 class="font-bold text-charcoal mb-2">Estética Dental</h3>
+            <p class="text-sm text-mid">Blanqueamiento, carillas, microrrellenos con ácido hialurónico.</p>
+          </article>
+          <article class="card-hover bg-white rounded-custom p-6 shadow border border-lavender">
+            <div class="w-12 h-12 bg-gradient-to-br from-violet to-accent-500 rounded-custom-sm flex items-center justify-center text-white text-xl mb-4">🦷</div>
+            <h3 class="font-bold text-charcoal mb-2">Endodoncia</h3>
+            <p class="text-sm text-mid">Tratamiento de conducto con tecnología avanzada para preservar tu diente.</p>
+          </article>
+          <article class="card-hover bg-white rounded-custom p-6 shadow border border-lavender">
+            <div class="w-12 h-12 bg-gradient-to-br from-violet to-accent-500 rounded-custom-sm flex items-center justify-center text-white text-xl mb-4">😊</div>
+            <h3 class="font-bold text-charcoal mb-2">Ortodoncia Invisalign</h3>
+            <p class="text-sm text-mid">Alineadores invisibles para una sonrisa perfecta sin brackets.</p>
+          </article>
+          <article class="card-hover bg-white rounded-custom p-6 shadow border border-lavender">
+            <div class="w-12 h-12 bg-gradient-to-br from-violet to-accent-500 rounded-custom-sm flex items-center justify-center text-white text-xl mb-4">💎</div>
+            <h3 class="font-bold text-charcoal mb-2">Implantes</h3>
+            <p class="text-sm text-mid">Implantes dentales avanzados con materiales de última generación.</p>
+          </article>
+          <article class="card-hover bg-white rounded-custom p-6 shadow border border-lavender">
+            <div class="w-12 h-12 bg-gradient-to-br from-violet to-accent-500 rounded-custom-sm flex items-center justify-center text-white text-xl mb-4">👶</div>
+            <h3 class="font-bold text-charcoal mb-2">Odontopediatría</h3>
+            <p class="text-sm text-mid">Cuidado dental especializado para los más pequeños.</p>
+          </article>
+          <article class="card-hover bg-white rounded-custom p-6 shadow border border-lavender">
+            <div class="w-12 h-12 bg-gradient-to-br from-violet to-accent-500 rounded-custom-sm flex items-center justify-center text-white text-xl mb-4">🩺</div>
+            <h3 class="font-bold text-charcoal mb-2">Limpieza Dental</h3>
+            <p class="text-sm text-mid">Profilaxis profesional para mantener tu salud bucal óptima.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ Formulario de Reserva Pública -->
+    <section id="reserva" class="py-16 bg-cream">
+      <div class="max-w-container mx-auto px-4">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          
+          <!-- Info -->
+          <div>
+            <h2 class="text-3xl font-bold font-serif text-charcoal mb-4">Reserva tu cita online</h2>
+            <p class="text-mid mb-6">Completa el formulario y te confirmaremos en menos de 24h.</p>
+            
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start gap-3">
+                <span class="text-violet text-xl">📍</span>
+                <div><p class="font-medium">Barcelona, Nou Barris</p><p class="text-sm text-mid">Carrer d'Escòcia, 94, 08016</p></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-violet text-xl">📞</span>
+                <div><p class="font-medium"><a href="tel:+34663165024" class="text-violet hover:underline">663 165 024</a></p><p class="text-sm text-mid">L-V: 9:00 – 20:00</p></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-violet text-xl">👨‍⚕️</span>
+                <div><p class="font-medium">Doctores</p><p class="text-sm text-mid">Dr. Jamil Albahri · Dr. Mohamad Sabbagh</p></div>
+              </div>
+            </div>
+            
+            <a href="https://wa.me/34663165024" class="inline-flex items-center gap-2 px-5 py-3 bg-green-wa text-white rounded-full font-medium hover:bg-green-600 transition">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+              Contactar por WhatsApp
+            </a>
+          </div>
+          
+          <!-- Form -->
+          <form id="booking-form" class="bg-white rounded-custom p-6 shadow-lg border border-lavender space-y-5">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-charcoal mb-1">Nombre completo *</label>
+                <input type="text" name="fullName" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" placeholder="Tu nombre" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-charcoal mb-1">Teléfono *</label>
+                <input type="tel" name="phone" required pattern="^[\+]?[\d\s\-\(\)]{7,20}$" class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" placeholder="+34 612 345 678" />
+              </div>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1">Email</label>
+              <input type="email" name="email" class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" placeholder="tu@email.com" />
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1">Motivo de la consulta *</label>
+              <select name="reason" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet">
+                <option value="">Seleccionar...</option>
+                <option value="revision">Revisión general</option>
+                <option value="limpieza">Limpieza dental</option>
+                <option value="urgencia">Dolor / Urgencia</option>
+                <option value="estetica">Estética dental</option>
+                <option value="ortodoncia">Ortodoncia</option>
+                <option value="implantes">Implantes</option>
+              </select>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-charcoal mb-1">Fecha preferida *</label>
+                <input type="date" name="date" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-charcoal mb-1">Hora preferida *</label>
+                <input type="time" name="time" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+              </div>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1">Notas adicionales</label>
+              <textarea name="notes" rows="3" class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" placeholder="Información relevante sobre tu caso..."></textarea>
+            </div>
+            
+            <button type="submit" class="w-full py-4 bg-gradient-to-r from-violet to-accent-500 text-white rounded-custom font-medium hover:from-violet-deep transition shadow-lg">
+              Solicitar Cita
+            </button>
+            
+            <p class="text-xs text-mid text-center">* Campos obligatorios. Te confirmaremos por teléfono o email.</p>
+            
+            <!-- Success Message -->
+            <div id="form-success" class="hidden p-4 bg-green-100 border border-green-200 rounded-custom-sm text-green-800 text-center">
+              <p class="font-medium">¡Solicitud enviada!</p>
+              <p class="text-sm">Te contactaremos pronto para confirmar tu cita.</p>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ Ubicación -->
+    <section id="ubicacion" class="py-16 bg-violet-pale">
+      <div class="max-w-container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold font-serif text-charcoal mb-4">Encuéntranos</h2>
+        <p class="text-mid mb-8">Clínica en Nou Barris, Barcelona</p>
+        <div class="bg-white rounded-custom overflow-hidden shadow-lg max-w-2xl mx-auto">
+          <div class="aspect-video bg-lavender flex items-center justify-center">
+            <p class="text-mid">🗺️ Mapa de Google</p>
+          </div>
+          <div class="p-6">
+            <p class="font-medium text-charcoal">Carrer d'Escòcia, 94, 08016 Barcelona</p>
+            <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x12a4bd2f24db06c9:0x7cd66158235db2c" target="_blank" class="inline-block mt-3 text-violet hover:underline">Ver en Google Maps →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ✅ Footer -->
+  <footer class="bg-charcoal text-white py-12">
+    <div class="max-w-container mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-gradient-to-br from-violet to-accent-500 rounded-custom-sm flex items-center justify-center">
+            <span class="text-white font-bold text-xl">A</span>
+          </div>
+          <span class="text-xl font-bold font-serif">Albadent</span>
+        </div>
+        <p class="text-sm text-mid">Tu clínica dental de confianza en Barcelona.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Servicios</h4>
+        <ul class="space-y-2 text-sm text-mid">
+          <li><a href="#servicios" class="hover:text-white">Estética Dental</a></li>
+          <li><a href="#servicios" class="hover:text-white">Implantes</a></li>
+          <li><a href="#servicios" class="hover:text-white">Ortodoncia</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Contacto</h4>
+        <ul class="space-y-2 text-sm text-mid">
+          <li><a href="tel:+34663165024" class="hover:text-white">663 165 024</a></li>
+          <li>info@albadent.com</li>
+          <li>L-V: 9:00 – 20:00</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Staff</h4>
+        <a href="/login" class="inline-block px-4 py-2 bg-violet text-white rounded-custom-sm text-sm font-medium hover:bg-violet-deep transition">Acceso CRM</a>
+      </div>
+    </div>
+    <div class="max-w-container mx-auto px-4 mt-8 pt-6 border-t border-charcoal/50 text-sm text-mid text-center">
+      © 2026 Clínica Dental Albadent. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <!-- ✅ WhatsApp Button -->
+  <a href="https://wa.me/34663165024" target="_blank" class="fixed bottom-5 right-5 w-14 h-14 bg-green-wa text-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 transition whatsapp-pulse" aria-label="WhatsApp">
+    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+  </a>
+
+  <!-- ✅ Scripts -->
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    
+    // Form submission
+    const form = document.getElementById('booking-form');
+    const successMsg = document.getElementById('form-success');
+    
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = 'Enviando...';
+      
+      try {
+        // Simular envío a API
+        await new Promise(r => setTimeout(r, 1500));
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+      } catch (err) {
+        alert('Error al enviar. Por favor, llámanos al 663 165 024.');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      }
+    });
+    
+    // Set min date to today
+    const dateInput = document.querySelector('input[type="date"]');
+    if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
+  </script>
+</body>
+</html>
