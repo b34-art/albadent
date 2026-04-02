@@ -1,1 +1,7 @@
-
+<!-- ✅ Imagen de la clínica desde tu repositorio -->
+<img 
+  src="./clinica.png" 
+  alt="Clínica Dental Albadent - Recepción" 
+  class="w-full h-auto object-cover"
+  onerror="this.style.display='none'; console.log('Error cargando clinica.png')"
+/>
