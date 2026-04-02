@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acceso Staff | Albadent CRM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violet: { DEFAULT: '#7C3AED', light: '#C4B5FD', pale: '#F5F3FF', deep: '#4C1D95' },
+            lavender: { DEFAULT: '#EDE9FE', mid: '#DDD6FE' },
+            cream: '#FDFCFB', charcoal: '#1C1C2E', mid: '#6B6B80', 'green-wa': '#25D366',
+          },
+          fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['DM Sans', 'sans-serif'] },
+          borderRadius: { 'custom': '16px', 'custom-sm': '8px' },
+        }
+      }
+    };
+  </script>
+  <style>
+    .form-input:focus { outline: none; box-shadow: 0 0 0 3px rgba(124,58,237,0.2); border-color: #7C3AED; }
+  </style>
+</head>
+<body class="font-sans bg-cream min-h-screen flex items-center justify-center p-4">
+  
+  <div class="w-full max-w-md bg-white rounded-custom shadow-xl p-8 border border-lavender">
+    <!-- Logo -->
+    <div class="text-center mb-8">
+      <div class="w-14 h-14 bg-gradient-to-br from-violet to-accent-500 rounded-custom-sm flex items-center justify-center mx-auto mb-4">
+        <span class="text-white font-bold text-2xl">A</span>
+      </div>
+      <h1 class="text-2xl font-bold font-serif text-charcoal">Albadent CRM</h1>
+      <p class="text-mid">Acceso para personal autorizado</p>
+    </div>
+    
+    <!-- Formulario JWT -->
+    <form id="login-form" class="space-y-5">
+      <div>
+        <label class="block text-sm font-medium text-charcoal mb-1">Email</label>
+        <input type="email" id="email" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" placeholder="tu@albadent.com" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-charcoal mb-1">Contraseña</label>
+        <input type="password" id="password" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" placeholder="••••••••" />
+      </div>
+      <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-violet to-accent-500 text-white rounded-custom font-medium hover:from-violet-deep transition shadow-lg">
+        Iniciar Sesión
+      </button>
+    </form>
+    
+    <!-- Divider -->
+    <div class="relative my-6">
+      <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-lavender"></div></div>
+      <div class="relative flex justify-center text-sm"><span class="px-3 bg-white text-mid">o continúa con</span></div>
+    </div>
+    
+    <!-- Google Auth -->
+    <button id="google-btn" class="w-full py-3.5 border-2 border-lavender text-charcoal rounded-custom font-medium hover:bg-violet-pale transition flex items-center justify-center gap-3">
+      <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      Continuar con Google
+    </button>
+    
+    <!-- Demo credentials -->
+    <div class="mt-6 p-3 bg-violet-pale rounded-custom-sm text-center">
+      <p class="text-xs text-charcoal"><strong>Demo:</strong> admin@albadent.com / admin123</p>
+    </div>
+    
+    <!-- Back to site -->
+    <p class="text-center mt-6 text-sm">
+      <a href="/" class="text-violet hover:underline">← Volver al sitio público</a>
+    </p>
+  </div>
+  
+  <script>
+    // JWT Login
+    document.getElementById('login-form')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          localStorage.setItem('token', data.token);
+          window.location.href = '/dashboard';
+        } else {
+          alert(data.error || 'Credenciales incorrectas');
+        }
+      } catch (err) {
+        alert('Error de conexión');
+      }
+    });
+    
+    // Google Auth (placeholder)
+    document.getElementById('google-btn')?.addEventListener('click', () => {
+      // Implementar con Google OAuth 2.0
+      window.location.href = 'https://accounts.google.com/o/oauth2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT&response_type=code&scope=profile%20email';
+    });
+  </script>
+</body>
+</html>
