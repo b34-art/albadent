@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Citas | Albadent CRM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violet: { DEFAULT: '#7C3AED', light: '#C4B5FD', pale: '#F5F3FF', deep: '#4C1D95' },
+            lavender: { DEFAULT: '#EDE9FE', mid: '#DDD6FE' },
+            cream: '#FDFCFB', charcoal: '#1C1C2E', mid: '#6B6B80', 'green-wa': '#25D366',
+          },
+          fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['DM Sans', 'sans-serif'] },
+          borderRadius: { 'custom': '16px', 'custom-sm': '8px' },
+        }
+      }
+    };
+  </script>
+  <style>
+    .form-input:focus { outline: none; box-shadow: 0 0 0 3px rgba(124,58,237,0.2); border-color: #7C3AED; }
+    .sidebar-link.active { background: linear-gradient(to right, #7C3AED, #06b6d4); color: white; }
+    .status-badge { @apply px-3 py-1 text-xs font-medium rounded-full; }
+    .status-pending { @apply bg-yellow-100 text-yellow-800; }
+    .status-confirmed { @apply bg-blue-100 text-blue-800; }
+    .status-completed { @apply bg-green-100 text-green-800; }
+    .status-cancelled { @apply bg-red-100 text-red-800; }
+  </style>
+</head>
+<body class="font-sans bg-cream text-charcoal">
+
+  <!-- ✅ Sidebar (same as patients.html) -->
+  <aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-lavender z-40 hidden lg:block">
+    <div class="p-6">
+      <a href="../index.html" class="flex items-center gap-3 mb-8">
+        <div class="w-10 h-10 bg-gradient-to-br from-violet to-accent-500 rounded-custom-sm flex items-center justify-center">
+          <span class="text-white font-bold text-xl">A</span>
+        </div>
+        <span class="text-xl font-bold font-serif">Albadent CRM</span>
+      </a>
+      
+      <nav class="space-y-2">
+        <a href="index.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"/></svg>
+          Dashboard
+        </a>
+        <a href="patients.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          Pacientes
+        </a>
+        <a href="appointments.html" class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          Citas
+        </a>
+        <a href="payments.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Pagos
+        </a>
+        <a href="settings.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Ajustes
+        </a>
+      </nav>
+    </div>
+    
+    <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-lavender">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-violet to-accent-500 rounded-full flex items-center justify-center text-white font-bold">AD</div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-medium text-charcoal truncate">Admin</p>
+          <p class="text-xs text-mid truncate">admin@albadent.com</p>
+        </div>
+        <button onclick="logout()" class="p-2 text-mid hover:text-violet transition" title="Cerrar sesión">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ✅ Main Content -->
+  <main class="lg:ml-64 min-h-screen">
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-lavender px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold font-serif text-charcoal">Citas</h1>
+          <p class="text-sm text-mid">Gestiona las citas de los pacientes</p>
+        </div>
+        <button onclick="openModal('appointment')" class="px-5 py-2.5 bg-gradient-to-r from-violet to-accent-500 text-white rounded-full font-medium hover:from-violet-deep transition shadow-lg flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Nueva Cita
+        </button>
+      </div>
+    </header>
+
+    <!-- Filters -->
+    <div class="px-6 py-4 bg-violet-pale/50">
+      <div class="flex flex-wrap gap-4">
+        <select id="filterStatus" class="form-input px-4 py-3 rounded-custom-sm bg-white border border-lavender focus:border-violet">
+          <option value="">Todos los estados</option>
+          <option value="PENDING">Pendientes</option>
+          <option value="CONFIRMED">Confirmadas</option>
+          <option value="COMPLETED">Completadas</option>
+          <option value="CANCELLED">Canceladas</option>
+        </select>
+        <input type="date" id="filterDate" class="form-input px-4 py-3 rounded-custom-sm bg-white border border-lavender focus:border-violet" />
+        <select id="filterDentist" class="form-input px-4 py-3 rounded-custom-sm bg-white border border-lavender focus:border-violet">
+          <option value="">Todos los dentistas</option>
+          <option value="jamil">Dr. Jamil Albahri</option>
+          <option value="mohamad">Dr. Mohamad Sabbagh</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Appointments List -->
+    <div class="px-6 py-6 space-y-4">
+      
+      <!-- Appointment Card Template -->
+      <div class="bg-white rounded-custom shadow border border-lavender p-5 hover:shadow-md transition">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="status-badge status-confirmed">Confirmada</span>
+              <span class="text-sm text-mid">#C-2026-045</span>
+            </div>
+            <h4 class="font-semibold text-charcoal mb-1">Isabel Rodríguez Torres</h4>
+            <p class="text-sm text-mid mb-2">Limpieza dental · Dr. García</p>
+            <div class="flex flex-wrap items-center gap-4 text-sm text-mid">
+              <span class="flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                27 mar 2026 · 17:00
+              </span>
+              <span class="flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                612 345 678
+              </span>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-2">
+            <button onclick="updateStatus('a1', 'COMPLETED')" class="px-4 py-2 bg-green-100 text-green-800 rounded-custom-sm text-sm font-medium hover:bg-green-200 transition">Completar</button>
+            <button onclick="openModal('appointment', 'a1')" class="px-4 py-2 border-2 border-lavender text-charcoal rounded-custom-sm text-sm font-medium hover:bg-violet-pale transition">Editar</button>
+            <button onclick="deleteAppointment('a1')" class="px-4 py-2 bg-red-100 text-red-800 rounded-custom-sm text-sm font-medium hover:bg-red-200 transition">Eliminar</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-custom shadow border border-lavender p-5 hover:shadow-md transition">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="status-badge status-confirmed">Confirmada</span>
+              <span class="text-sm text-mid">#C-2026-046</span>
+            </div>
+            <h4 class="font-semibold text-charcoal mb-1">María López García</h4>
+            <p class="text-sm text-mid mb-2">Revisión general · Dr. García</p>
+            <div class="flex flex-wrap items-center gap-4 text-sm text-mid">
+              <span class="flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                28 mar 2026 · 11:00
+              </span>
+              <span class="flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                623 456 789
+              </span>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-2">
+            <button onclick="updateStatus('a2', 'COMPLETED')" class="px-4 py-2 bg-green-100 text-green-800 rounded-custom-sm text-sm font-medium hover:bg-green-200 transition">Completar</button>
+            <button onclick="openModal('appointment', 'a2')" class="px-4 py-2 border-2 border-lavender text-charcoal rounded-custom-sm text-sm font-medium hover:bg-violet-pale transition">Editar</button>
+            <button onclick="deleteAppointment('a2')" class="px-4 py-2 bg-red-100 text-red-800 rounded-custom-sm text-sm font-medium hover:bg-red-200 transition">Eliminar</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+  <!-- ✅ Modal: Nueva/Editar Cita -->
+  <div id="appointmentModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+      <div class="fixed inset-0 bg-charcoal/50 transition-opacity" onclick="closeModal('appointment')"></div>
+      
+      <div class="relative bg-white rounded-custom shadow-xl max-w-2xl w-full mx-auto p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl font-bold font-serif text-charcoal" id="modalTitle">Nueva Cita</h3>
+          <button onclick="closeModal('appointment')" class="text-mid hover:text-charcoal">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        
+        <form id="appointmentForm" class="space-y-5">
+          <div>
+            <label class="block text-sm font-medium text-charcoal mb-1">Paciente *</label>
+            <select name="patientId" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet">
+              <option value="">Seleccionar paciente...</option>
+              <option value="p1">Isabel Rodríguez Torres</option>
+              <option value="p2">María López García</option>
+            </select>
+          </div>
+          
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1">Dentista *</label>
+              <select name="dentistId" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet">
+                <option value="jamil">Dr. Jamil Albahri</option>
+                <option value="mohamad">Dr. Mohamad Sabbagh</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1">Estado</label>
+              <select name="status" class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet">
+                <option value="PENDING">Pendiente</option>
+                <option value="CONFIRMED">Confirmada</option>
+                <option value="COMPLETED">Completada</option>
+                <option value="CANCELLED">Cancelada</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1">Fecha *</label>
+              <input type="date" name="date" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1">Hora *</label>
+              <input type="time" name="time" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-charcoal mb-1">Motivo *</label>
+            <select name="reason" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet">
+              <option value="">Seleccionar...</option>
+              <option value="revision">Revisión general</option>
+              <option value="limpieza">Limpieza dental</option>
+              <option value="urgencia">Dolor / Urgencia</option>
+              <option value="estetica">Estética dental</option>
+              <option value="ortodoncia">Ortodoncia</option>
+              <option value="implantes">Implantes</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-charcoal mb-1">Notas</label>
+            <textarea name="notes" rows="3" class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet"></textarea>
+          </div>
+          
+          <div class="flex justify-end gap-3 pt-4">
+            <button type="button" onclick="closeModal('appointment')" class="px-6 py-2.5 border-2 border-lavender text-charcoal rounded-custom font-medium hover:bg-violet-pale transition">Cancelar</button>
+            <button type="submit" class="px-6 py-2.5 bg-gradient-to-r from-violet to-accent-500 text-white rounded-custom font-medium hover:from-violet-deep transition shadow-lg">Guardar Cita</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Scripts -->
+  <script>
+    // Auth check
+    if (!localStorage.getItem('demoToken') && !localStorage.getItem('token')) {
+      window.location.href = '../login.html';
+    }
+    
+    function openModal(type, id = null) {
+      document.getElementById(type + 'Modal').classList.remove('hidden');
+      if (id) document.getElementById('modalTitle').textContent = 'Editar Cita';
+      else {
+        document.getElementById('modalTitle').textContent = 'Nueva Cita';
+        document.getElementById('appointmentForm').reset();
+      }
+    }
+    
+    function closeModal(type) {
+      document.getElementById(type + 'Modal').classList.add('hidden');
+    }
+    
+    document.getElementById('appointmentForm')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Cita guardada (demo)');
+      closeModal('appointment');
+    });
+    
+    function updateStatus(id, status) {
+      if (confirm(`¿Cambiar estado a ${status}?`)) {
+        alert(`Estado actualizado (demo)`);
+        // API call: PATCH /api/appointments/{id}
+      }
+    }
+    
+    function deleteAppointment(id) {
+      if (confirm('¿Eliminar esta cita?')) {
+        alert('Cita eliminada (demo)');
+        // API call: DELETE /api/appointments/{id}
+      }
+    }
+    
+    function logout() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('demoToken');
+      window.location.href = '../login.html';
+    }
+  </script>
+</body>
+</html>
