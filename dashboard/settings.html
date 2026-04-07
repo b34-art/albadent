@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ajustes | Albadent CRM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violet: { DEFAULT: '#7C3AED', light: '#C4B5FD', pale: '#F5F3FF', deep: '#4C1D95' },
+            lavender: { DEFAULT: '#EDE9FE', mid: '#DDD6FE' },
+            cream: '#FDFCFB', charcoal: '#1C1C2E', mid: '#6B6B80', 'green-wa': '#25D366',
+          },
+          fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['DM Sans', 'sans-serif'] },
+          borderRadius: { 'custom': '16px', 'custom-sm': '8px' },
+        }
+      }
+    };
+  </script>
+  <style>
+    .form-input:focus { outline: none; box-shadow: 0 0 0 3px rgba(124,58,237,0.2); border-color: #7C3AED; }
+    .sidebar-link.active { background: linear-gradient(to right, #7C3AED, #06b6d4); color: white; }
+  </style>
+</head>
+<body class="font-sans bg-cream text-charcoal">
+
+  <!-- ✅ Sidebar -->
+  <aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-lavender z-40 hidden lg:block">
+    <div class="p-6">
+      <a href="../index.html" class="flex items-center gap-3 mb-8">
+        <div class="w-10 h-10 bg-gradient-to-br from-violet to-accent-500 rounded-custom-sm flex items-center justify-center">
+          <span class="text-white font-bold text-xl">A</span>
+        </div>
+        <span class="text-xl font-bold font-serif">Albadent CRM</span>
+      </a>
+      <nav class="space-y-2">
+        <a href="index.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"/></svg>
+          Dashboard
+        </a>
+        <a href="patients.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          Pacientes
+        </a>
+        <a href="appointments.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          Citas
+        </a>
+        <a href="payments.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Pagos
+        </a>
+        <a href="settings.html" class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Ajustes
+        </a>
+      </nav>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-lavender">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-violet to-accent-500 rounded-full flex items-center justify-center text-white font-bold">AD</div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-medium text-charcoal truncate">Admin</p>
+          <p class="text-xs text-mid truncate">admin@albadent.com</p>
+        </div>
+        <button onclick="logout()" class="p-2 text-mid hover:text-violet transition" title="Cerrar sesión">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ✅ Main Content -->
+  <main class="lg:ml-64 min-h-screen">
+    <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-lavender px-6 py-4">
+      <h1 class="text-2xl font-bold font-serif text-charcoal">Ajustes</h1>
+    </header>
+
+    <div class="px-6 py-6 max-w-4xl">
+      
+      <!-- Admin Only Warning -->
+      <div id="adminWarning" class="hidden bg-red-50 border border-red-200 rounded-custom p-4 mb-6">
+        <p class="text-red-800 text-sm">⚠️ Esta sección solo está disponible para administradores.</p>
+      </div>
+
+      <!-- Settings Sections -->
+      <div class="space-y-6">
+        
+        <!-- Perfil -->
+        <section class="bg-white rounded-custom shadow border border-lavender p-6">
+          <h3 class="text-lg font-bold font-serif text-charcoal mb-4">Mi Perfil</h3>
+          <form class="space-y-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-charcoal mb-1">Nombre</label>
+                <input type="text" value="Admin" class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-charcoal mb-1">Email</label>
+                <input type="email" value="admin@albadent.com" class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+              </div>
+            </div>
+            <button type="button" class="px-6 py-2.5 bg-gradient-to-r from-violet to-accent-500 text-white rounded-custom font-medium hover:from-violet-deep transition">Guardar Cambios</button>
+          </form>
+        </section>
+
+        <!-- Usuarios (Solo ADMIN) -->
+        <section class="bg-white rounded-custom shadow border border-lavender p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold font-serif text-charcoal">Usuarios del Sistema</h3>
+            <button onclick="openModal('user')" class="px-4 py-2 bg-violet-pale text-violet rounded-custom-sm text-sm font-medium hover:bg-violet-light transition">+ Nuevo Usuario</button>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-4 bg-violet-pale rounded-custom-sm">
+              <div>
+                <p class="font-medium text-charcoal">admin@albadent.com</p>
+                <p class="text-sm text-mid">Administrador</p>
+              </div>
+              <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded-full">Admin</span>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-violet-pale rounded-custom-sm">
+              <div>
+                <p class="font-medium text-charcoal">recepcion@albadent.com</p>
+                <p class="text-sm text-mid">Recepcionista</p>
+              </div>
+              <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">Receptionist</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Configuración de la Clínica -->
+        <section class="bg-white rounded-custom shadow border border-lavender p-6">
+          <h3 class="text-lg font-bold font-serif text-charcoal mb-4">Configuración de la Clínica</h3>
+          <form class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1">Nombre de la Clínica</label>
+              <input type="text" value="Clínica Dental Albadent" class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1">Dirección</label>
+              <input type="text" value="Carrer d'Escòcia, 94, 08016 Barcelona" class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-charcoal mb-1">Teléfono</label>
+                <input type="tel" value="663 165 024" class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-charcoal mb-1">Email</label>
+                <input type="email" value="info@albadent.com" class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+              </div>
+            </div>
+            <button type="button" class="px-6 py-2.5 bg-gradient-to-r from-violet to-accent-500 text-white rounded-custom font-medium hover:from-violet-deep transition">Guardar Configuración</button>
+          </form>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ✅ Modal: Nuevo Usuario -->
+  <div id="userModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+      <div class="fixed inset-0 bg-charcoal/50 transition-opacity" onclick="closeModal('user')"></div>
+      <div class="relative bg-white rounded-custom shadow-xl max-w-md w-full mx-auto p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl font-bold font-serif text-charcoal">Nuevo Usuario</h3>
+          <button onclick="closeModal('user')" class="text-mid hover:text-charcoal">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <form id="userForm" class="space-y-5">
+          <div>
+            <label class="block text-sm font-medium text-charcoal mb-1">Nombre</label>
+            <input type="text" name="name" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-charcoal mb-1">Email</label>
+            <input type="email" name="email" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-charcoal mb-1">Contraseña</label>
+            <input type="password" name="password" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-charcoal mb-1">Rol</label>
+            <select name="role" class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet">
+              <option value="RECEPTIONIST">Recepcionista</option>
+              <option value="DENTIST_1">Dentista 1</option>
+              <option value="DENTIST_2">Dentista 2</option>
+              <option value="ADMIN">Administrador</option>
+            </select>
+          </div>
+          <div class="flex justify-end gap-3 pt-4">
+            <button type="button" onclick="closeModal('user')" class="px-6 py-2.5 border-2 border-lavender text-charcoal rounded-custom font-medium hover:bg-violet-pale transition">Cancelar</button>
+            <button type="submit" class="px-6 py-2.5 bg-gradient-to-r from-violet to-accent-500 text-white rounded-custom font-medium hover:from-violet-deep transition shadow-lg">Crear Usuario</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Scripts -->
+  <script>
+    // Auth & Role check
+    const token = localStorage.getItem('token') || localStorage.getItem('demoToken');
+    const userRole = 'ADMIN'; // Demo: en producción obtener del token decodificado
+    
+    if (!token) {
+      window.location.href = '../login.html';
+    }
+    
+    // Show warning if not admin
+    if (userRole !== 'ADMIN') {
+      document.getElementById('adminWarning').classList.remove('hidden');
+      // Optionally disable form inputs
+      document.querySelectorAll('input, select, button').forEach(el => {
+        if (!el.closest('#adminWarning')) el.disabled = true;
+      });
+    }
+    
+    function openModal(type) {
+      document.getElementById(type + 'Modal').classList.remove('hidden');
+    }
+    function closeModal(type) {
+      document.getElementById(type + 'Modal').classList.add('hidden');
+    }
+    
+    document.getElementById('userForm')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Usuario creado (demo)');
+      closeModal('user');
+    });
+    
+    function logout() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('demoToken');
+      window.location.href = '../login.html';
+    }
+  </script>
+</body>
+</html>
