@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pagos | Albadent CRM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violet: { DEFAULT: '#7C3AED', light: '#C4B5FD', pale: '#F5F3FF', deep: '#4C1D95' },
+            lavender: { DEFAULT: '#EDE9FE', mid: '#DDD6FE' },
+            cream: '#FDFCFB', charcoal: '#1C1C2E', mid: '#6B6B80', 'green-wa': '#25D366',
+          },
+          fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['DM Sans', 'sans-serif'] },
+          borderRadius: { 'custom': '16px', 'custom-sm': '8px' },
+        }
+      }
+    };
+  </script>
+  <style>
+    .form-input:focus { outline: none; box-shadow: 0 0 0 3px rgba(124,58,237,0.2); border-color: #7C3AED; }
+    .sidebar-link.active { background: linear-gradient(to right, #7C3AED, #06b6d4); color: white; }
+  </style>
+</head>
+<body class="font-sans bg-cream text-charcoal">
+
+  <!-- ✅ Sidebar (same structure) -->
+  <aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-lavender z-40 hidden lg:block">
+    <div class="p-6">
+      <a href="../index.html" class="flex items-center gap-3 mb-8">
+        <div class="w-10 h-10 bg-gradient-to-br from-violet to-accent-500 rounded-custom-sm flex items-center justify-center">
+          <span class="text-white font-bold text-xl">A</span>
+        </div>
+        <span class="text-xl font-bold font-serif">Albadent CRM</span>
+      </a>
+      <nav class="space-y-2">
+        <a href="index.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"/></svg>
+          Dashboard
+        </a>
+        <a href="patients.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          Pacientes
+        </a>
+        <a href="appointments.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          Citas
+        </a>
+        <a href="payments.html" class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Pagos
+        </a>
+        <a href="settings.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-custom-sm text-mid hover:bg-violet-pale transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Ajustes
+        </a>
+      </nav>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-lavender">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-violet to-accent-500 rounded-full flex items-center justify-center text-white font-bold">AD</div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-medium text-charcoal truncate">Admin</p>
+          <p class="text-xs text-mid truncate">admin@albadent.com</p>
+        </div>
+        <button onclick="logout()" class="p-2 text-mid hover:text-violet transition" title="Cerrar sesión">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ✅ Main Content -->
+  <main class="lg:ml-64 min-h-screen">
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-lavender px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold font-serif text-charcoal">Pagos</h1>
+          <p class="text-sm text-mid">Registra y gestiona los pagos de los pacientes</p>
+        </div>
+        <button onclick="openModal('payment')" class="px-5 py-2.5 bg-gradient-to-r from-violet to-accent-500 text-white rounded-full font-medium hover:from-violet-deep transition shadow-lg flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Registrar Pago
+        </button>
+      </div>
+    </header>
+
+    <!-- Stats Overview -->
+    <div class="px-6 py-4 grid sm:grid-cols-3 gap-4">
+      <div class="bg-white rounded-custom p-5 shadow border border-lavender">
+        <p class="text-sm text-mid mb-1">Total Facturado</p>
+        <p class="text-2xl font-bold text-charcoal">€15.420,50</p>
+      </div>
+      <div class="bg-white rounded-custom p-5 shadow border border-lavender">
+        <p class="text-sm text-mid mb-1">Total Cobrado</p>
+        <p class="text-2xl font-bold text-green-600">€12.300,00</p>
+      </div>
+      <div class="bg-white rounded-custom p-5 shadow border border-lavender">
+        <p class="text-sm text-mid mb-1">Pendiente de Cobro</p>
+        <p class="text-2xl font-bold text-amber-600">€3.120,50</p>
+      </div>
+    </div>
+
+    <!-- Payments Table -->
+    <div class="px-6 py-6">
+      <div class="bg-white rounded-custom shadow border border-lavender overflow-hidden">
+        <table class="w-full">
+          <thead class="bg-violet-pale">
+            <tr>
+              <th class="px-6 py-4 text-left text-xs font-semibold text-mid uppercase">Paciente</th>
+              <th class="px-6 py-4 text-left text-xs font-semibold text-mid uppercase">Descripción</th>
+              <th class="px-6 py-4 text-left text-xs font-semibold text-mid uppercase">Monto</th>
+              <th class="px-6 py-4 text-left text-xs font-semibold text-mid uppercase">Fecha</th>
+              <th class="px-6 py-4 text-left text-xs font-semibold text-mid uppercase">Método</th>
+              <th class="px-6 py-4 text-right text-xs font-semibold text-mid uppercase">Acciones</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-lavender">
+            <tr class="hover:bg-violet-pale/30 transition">
+              <td class="px-6 py-4">
+                <p class="font-medium text-charcoal">Isabel Rodríguez Torres</p>
+                <p class="text-xs text-mid">#P-2026-001</p>
+              </td>
+              <td class="px-6 py-4 text-sm text-mid">Limpieza dental + Blanqueamiento</td>
+              <td class="px-6 py-4 text-sm font-semibold text-charcoal">€150,00</td>
+              <td class="px-6 py-4 text-sm text-mid">27 mar 2026</td>
+              <td class="px-6 py-4"><span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">Tarjeta</span></td>
+              <td class="px-6 py-4 text-right">
+                <button class="text-violet hover:text-violet-deep text-sm font-medium">Ver</button>
+              </td>
+            </tr>
+            <tr class="hover:bg-violet-pale/30 transition">
+              <td class="px-6 py-4">
+                <p class="font-medium text-charcoal">María López García</p>
+                <p class="text-xs text-mid">#P-2026-002</p>
+              </td>
+              <td class="px-6 py-4 text-sm text-mid">Revisión general</td>
+              <td class="px-6 py-4 text-sm font-semibold text-charcoal">€80,00</td>
+              <td class="px-6 py-4 text-sm text-mid">28 mar 2026</td>
+              <td class="px-6 py-4"><span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">Efectivo</span></td>
+              <td class="px-6 py-4 text-right">
+                <button class="text-violet hover:text-violet-deep text-sm font-medium">Ver</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- ✅ Modal: Registrar Pago -->
+  <div id="paymentModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+      <div class="fixed inset-0 bg-charcoal/50 transition-opacity" onclick="closeModal('payment')"></div>
+      <div class="relative bg-white rounded-custom shadow-xl max-w-lg w-full mx-auto p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl font-bold font-serif text-charcoal">Registrar Pago</h3>
+          <button onclick="closeModal('payment')" class="text-mid hover:text-charcoal">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <form id="paymentForm" class="space-y-5">
+          <div>
+            <label class="block text-sm font-medium text-charcoal mb-1">Paciente *</label>
+            <select name="patientId" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet">
+              <option value="">Seleccionar paciente...</option>
+              <option value="p1">Isabel Rodríguez Torres</option>
+              <option value="p2">María López García</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-charcoal mb-1">Descripción *</label>
+            <input type="text" name="description" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" placeholder="Ej: Limpieza dental" />
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1">Monto (€) *</label>
+              <input type="number" name="amount" step="0.01" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" placeholder="0.00" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1">Método de pago *</label>
+              <select name="method" required class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet">
+                <option value="cash">Efectivo</option>
+                <option value="card">Tarjeta</option>
+                <option value="transfer">Transferencia</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-charcoal mb-1">Fecha de pago</label>
+            <input type="date" name="paymentDate" class="form-input w-full px-4 py-3 rounded-custom-sm bg-cream border border-lavender focus:border-violet" />
+          </div>
+          <div class="flex justify-end gap-3 pt-4">
+            <button type="button" onclick="closeModal('payment')" class="px-6 py-2.5 border-2 border-lavender text-charcoal rounded-custom font-medium hover:bg-violet-pale transition">Cancelar</button>
+            <button type="submit" class="px-6 py-2.5 bg-gradient-to-r from-violet to-accent-500 text-white rounded-custom font-medium hover:from-violet-deep transition shadow-lg">Registrar Pago</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Scripts -->
+  <script>
+    if (!localStorage.getItem('demoToken') && !localStorage.getItem('token')) {
+      window.location.href = '../login.html';
+    }
+    
+    function openModal(type) {
+      document.getElementById(type + 'Modal').classList.remove('hidden');
+    }
+    function closeModal(type) {
+      document.getElementById(type + 'Modal').classList.add('hidden');
+    }
+    document.getElementById('paymentForm')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Pago registrado (demo)');
+      closeModal('payment');
+    });
+    function logout() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('demoToken');
+      window.location.href = '../login.html';
+    }
+  </script>
+</body>
+</html>
