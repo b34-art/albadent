@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Albadent CRM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violet: { DEFAULT: '#7C3AED', light: '#C4B5FD', pale: '#F5F3FF', deep: '#4C1D95' },
+            lavender: { DEFAULT: '#EDE9FE', mid: '#DDD6FE' },
+            cream: '#FDFCFB', charcoal: '#1C1C2E', mid: '#6B6B80',
+          },
+          fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['DM Sans', 'sans-serif'] },
+          borderRadius: { 'custom': '16px', 'custom-sm': '8px' },
+        }
+      }
+    };
+  </script>
+</head>
+<body class="font-sans bg-cream text-charcoal">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-lavender px-6 py-4">
+    <div class="max-w-container mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-violet to-accent-500 rounded-custom-sm flex items-center justify-center">
+          <span class="text-white font-bold text-xl">A</span>
+        </div>
+        <span class="text-xl font-bold font-serif">Albadent CRM</span>
+      </div>
+      <button onclick="logout()" class="px-4 py-2 text-mid hover:text-violet transition">
+        Cerrar Sesión
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-container mx-auto px-6 py-8">
+    <h1 class="text-3xl font-bold font-serif text-charcoal mb-6">Dashboard</h1>
+    
+    <!-- Stats Cards -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div class="bg-white rounded-custom p-5 shadow border border-lavender">
+        <p class="text-sm text-mid mb-1">Total Pacientes</p>
+        <p class="text-2xl font-bold text-charcoal">127</p>
+      </div>
+      <div class="bg-white rounded-custom p-5 shadow border border-lavender">
+        <p class="text-sm text-mid mb-1">Citas Hoy</p>
+        <p class="text-2xl font-bold text-charcoal">8</p>
+      </div>
+      <div class="bg-white rounded-custom p-5 shadow border border-lavender">
+        <p class="text-sm text-mid mb-1">Pendientes</p>
+        <p class="text-2xl font-bold text-amber-600">12</p>
+      </div>
+      <div class="bg-white rounded-custom p-5 shadow border border-lavender">
+        <p class="text-sm text-mid mb-1">Facturado</p>
+        <p class="text-2xl font-bold text-green-600">€3.420</p>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a href="./patients.html" class="bg-white rounded-custom p-5 shadow border border-lavender hover:shadow-md transition block">
+        <h3 class="font-semibold text-charcoal mb-2">👥 Pacientes</h3>
+        <p class="text-sm text-mid">Gestiona la información de tus pacientes</p>
+      </a>
+      <a href="./appointments.html" class="bg-white rounded-custom p-5 shadow border border-lavender hover:shadow-md transition block">
+        <h3 class="font-semibold text-charcoal mb-2">📅 Citas</h3>
+        <p class="text-sm text-mid">Visualiza y gestiona las citas del día</p>
+      </a>
+      <a href="./payments.html" class="bg-white rounded-custom p-5 shadow border border-lavender hover:shadow-md transition block">
+        <h3 class="font-semibold text-charcoal mb-2">💰 Pagos</h3>
+        <p class="text-sm text-mid">Registra y consulta los pagos realizados</p>
+      </a>
+    </div>
+  </main>
+
+  <script>
+    // Auth check (demo)
+    if (!localStorage.getItem('demoToken') && !localStorage.getItem('token')) {
+      window.location.href = '../login.html';
+    }
+    
+    function logout() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('demoToken');
+      window.location.href = '../login.html';
+    }
+  </script>
+</body>
+</html>
